@@ -3,19 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmation Page</title>
+    <title>Question Page</title>
     <style>
+        body {
+            background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            margin-top: 50px;
+        }
+
         button {
             display: block;
             margin: 10px auto;
             position: absolute;
         }
+
+        #question {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        #yesButton, #noButton, #confirmButton {
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
 
-<button id="confirmButton" onclick="changeButtonPosition('confirmButton')">Je confirme</button>
-<button id="denyButton" onclick="changeButtonPosition('denyButton')">Je ne confirme pas</button>
+<div id="question">Je suis gay ?</div>
+<button id="noButton" onclick="changeTextPosition('noButton')">Non</button>
+<button id="yesButton" onclick="showConfirmation()">Oui</button>
 
 <script>
     function getRandomPosition() {
@@ -28,11 +46,19 @@
         return [randomX, randomY];
     }
 
-    function changeButtonPosition(buttonId) {
+    function changeTextPosition(buttonId) {
         var button = document.getElementById(buttonId);
         var position = getRandomPosition();
         button.style.left = position[0] + 'px';
         button.style.top = position[1] + 'px';
+    }
+
+    function showConfirmation() {
+        var answer = confirm("Êtes-vous sûrs ?");
+        if (answer) {
+            document.body.style.background = 'blue';
+            document.body.innerHTML = '<h1>Au revoir</h1>';
+        }
     }
 </script>
 
