@@ -6,16 +6,17 @@
     <title>Question Page</title>
     <style>
         body {
-            background: url('https://cdn.webshopapp.com/shops/351825/files/433618328/1150x930x2/baton-de-drapeau-arc-en-ciel-45cm.jpg') center/cover;
+            background: url('lien-du-drapeau-gpt.jpg') center/cover no-repeat;
             color: black;
             text-align: center;
             font-size: 24px;
-            margin-top: 50px;
+            margin: 0;
+            padding: 0;
         }
 
         #question {
             font-size: 36px;
-            margin-bottom: 20px;
+            margin-bottom: 50px;
         }
 
         #yesButton, #noButton, #confirmButton {
@@ -28,6 +29,8 @@
             position: absolute;
             left: 20%;
             bottom: 10%;
+            width: 100px; /* Taille fixe du bouton */
+            height: 40px; /* Taille fixe du bouton */
             color: red; /* Choisir une couleur visible */
         }
 
@@ -35,13 +38,30 @@
             position: absolute;
             right: 20%;
             bottom: 10%;
+            width: 100px; /* Taille fixe du bouton */
+            height: 40px; /* Taille fixe du bouton */
             color: green; /* Choisir une couleur visible */
+        }
+
+        #confirmButton {
+            width: 150px; /* Taille fixe du bouton */
+            height: 50px; /* Taille fixe du bouton */
+        }
+
+        .confirmation-text {
+            font-size: 18px;
+        }
+
+        #loading {
+            display: none;
+            font-size: 12px;
+            margin-top: 100px;
         }
     </style>
 </head>
 <body>
 
-<div id="question">Et tu gai ?</div>
+<div id="question">Et tu GAY ?</div>
 <button id="noButton" onclick="changeTextPosition('noButton')">Non</button>
 <button id="yesButton" onclick="showConfirmation()">Oui</button>
 
@@ -64,10 +84,26 @@
     }
 
     function showConfirmation() {
-        var answer = confirm("Êtes-vous sûrs ?");
-        if (answer) {
-            document.body.style.background = 'white';
-            document.body.innerHTML = '<h1>...</h1>';
+        var confirmButton = document.createElement("button");
+        confirmButton.id = "confirmButton";
+        confirmButton.className = "confirmation-text";
+        confirmButton.innerText = "CONFIRMER";
+        confirmButton.onclick = function() {
+            showConfirmation(); // Ajout de bouton supplémentaire
+        };
+
+        document.body.appendChild(confirmButton);
+
+        if (confirm("Êtes-vous sûr ?")) {
+            var loadingText = document.createElement("div");
+            loadingText.id = "loading";
+            loadingText.innerText = "...";
+            document.body.appendChild(loadingText);
+
+            setTimeout(function() {
+                document.body.style.background = 'white';
+                loadingText.style.display = 'none';
+            }, 2000); // Changement de la couleur de fond après 2 secondes
         }
     }
 </script>
