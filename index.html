@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation Page</title>
+    <style>
+        button {
+            display: block;
+            margin: 10px auto;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<button id="confirmButton" onclick="changeButtonPosition('confirmButton')">Je confirme</button>
+<button id="denyButton" onclick="changeButtonPosition('denyButton')">Je ne confirme pas</button>
+
+<script>
+    function getRandomPosition() {
+        var x = window.innerWidth - 100;
+        var y = window.innerHeight - 50;
+
+        var randomX = Math.floor(Math.random() * x);
+        var randomY = Math.floor(Math.random() * y);
+
+        return [randomX, randomY];
+    }
+
+    function changeButtonPosition(buttonId) {
+        var button = document.getElementById(buttonId);
+        var position = getRandomPosition();
+        button.style.left = position[0] + 'px';
+        button.style.top = position[1] + 'px';
+    }
+</script>
+
+</body>
+</html>
