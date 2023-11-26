@@ -6,17 +6,11 @@
     <title>Question Page</title>
     <style>
         body {
-            background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
-            color: white;
+            background: url('https://cdn.webshopapp.com/shops/351825/files/433618328/1150x930x2/baton-de-drapeau-arc-en-ciel-45cm.jpg') center/cover;
+            color: black;
             text-align: center;
             font-size: 24px;
             margin-top: 50px;
-        }
-
-        button {
-            display: block;
-            margin: 10px auto;
-            position: absolute;
         }
 
         #question {
@@ -26,12 +20,28 @@
 
         #yesButton, #noButton, #confirmButton {
             font-size: 24px;
+            display: block;
+            margin: 10px auto;
+        }
+
+        #noButton {
+            position: absolute;
+            left: 20%;
+            bottom: 10%;
+            color: red; /* Choisir une couleur visible */
+        }
+
+        #yesButton {
+            position: absolute;
+            right: 20%;
+            bottom: 10%;
+            color: green; /* Choisir une couleur visible */
         }
     </style>
 </head>
 <body>
 
-<div id="question">Je suis gay ?</div>
+<div id="question">Et tu gai ?</div>
 <button id="noButton" onclick="changeTextPosition('noButton')">Non</button>
 <button id="yesButton" onclick="showConfirmation()">Oui</button>
 
@@ -56,8 +66,8 @@
     function showConfirmation() {
         var answer = confirm("Êtes-vous sûrs ?");
         if (answer) {
-            document.body.style.background = 'blue';
-            document.body.innerHTML = '<h1>Au revoir</h1>';
+            document.body.style.background = 'white';
+            document.body.innerHTML = '<h1>...</h1>';
         }
     }
 </script>
